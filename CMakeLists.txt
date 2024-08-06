@@ -5,6 +5,4 @@ include_directories(include)
 
 set(SOURCES app/mainapp.cpp src/student.cpp)
 
-# file(GLOB SOURCES "app/mainapp.cpp" "src/*.cpp")
-
 add_executable(smartpointers ${SOURCES})
