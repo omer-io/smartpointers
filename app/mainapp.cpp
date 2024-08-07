@@ -10,8 +10,8 @@ class database{
    public:
       database(vector<Student> s) : db(s){}
 
-      shared_ptr<Student> get_student_reference(string s_name){
-         for(auto student : db){
+      shared_ptr<Student> get_student_reference(const string& s_name){
+         for(auto& student : db){
             if(student.get_name() == s_name){
                return make_shared<Student>(student);
                }
@@ -20,10 +20,16 @@ class database{
       }
 };
 
+void print_student_record(shared_ptr<Student> student_ptr) {
+   student_ptr->display();
+}
+
 int main(){
    vector<Student> s = {Student("Malik"), Student("Omer"), Student("Jamil"), Student("Ali"), Student("Khan")};
    database studentdb(s);
    shared_ptr<Student> s1 = studentdb.get_student_reference("Malik");
    s1->display();
+
+   print_student_record(s1);
    return 0;
 }
